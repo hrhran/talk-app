@@ -1,0 +1,51 @@
+@import "../../../styles/fonts";
+@import "../../../styles/colors";
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 8em;
+
+  .navbar_icon {
+    a {
+      font-size: 1.125rem;
+      font-weight: $f-semibold;
+      cursor: pointer;
+      color: $primary-tc;
+      text-decoration: none;
+    }
+  }
+
+  .navbar_links {
+    a {
+      text-decoration: none;
+      font-size: 0.975rem;
+      color: $nav-link-ia-color;
+      font-weight: $f-regular;
+      padding: 10px 3px;
+      letter-spacing: .5px;
+      display: inline-block;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: $accent-color;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+
+      &:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+    }
+  }
+}
