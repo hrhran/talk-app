@@ -9,9 +9,11 @@ import WelcomePage from './components/pages/WelcomePage/WelcomePage';
 import ErrorPage from './components/pages/ErrorPage/ErrorPage';
 import Login from './components/pages/Login/Login';
 import SignUp from './components/pages/Signup/SignUp';
+import Profile from './components/pages/Profile/Profile';
 
 // styles
 import './styles/global.scss'
+import { UserContextProvider } from './context/userContext';
 
 const router = createBrowserRouter([
   {
@@ -26,13 +28,19 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <SignUp />
+  },
+  {
+    path: '/profile',
+    element: <Profile />
   }
 ])
 
 function App() {
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <UserContextProvider>
+        <RouterProvider router={router} />
+      </UserContextProvider>
     </div>
   )
 }

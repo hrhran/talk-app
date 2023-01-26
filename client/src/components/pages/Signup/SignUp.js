@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { urls } from '../../../api/urls';
 import { useFetch } from '../../../hooks/useFetch';
 
+import './SignUp.scss';
+
 const SignUp = () => {
 
   const navigate = useNavigate()
@@ -31,21 +33,21 @@ const SignUp = () => {
   }
 
 
-  return <>
+  return <div className='signup_page'>
     <form method='post' onSubmit={signUpChangeHandler}>
-      <label htmlFor="name"> username
-        <input type="text" id="username" name="username" minLength="4" maxLength="50" required onChange={changeHandler}></input>
-      </label>
-      <label htmlFor="email"> Email
-        <input type="text" id="email" name="email" minLength="10" maxLength="50" required onChange={changeHandler}></input>
-      </label>
-      <label htmlFor="password"> Password
-        <input type="password" id="password" name="password" minLength="4" maxLength="20" required onChange={changeHandler}></input>
-      </label>
+      {/* <label htmlFor="name"> username */}
+        <input type="text" id="username" name="username" minLength="4" maxLength="50" placeholder='username' required onChange={changeHandler}></input>
+      {/* </label> */}
+      {/* <label htmlFor="email"> Email */}
+        <input type="text" id="email" name="email" minLength="10" maxLength="50" placeholder='email' required onChange={changeHandler}></input>
+      {/* </label> */}
+      {/* <label htmlFor="password"> Password */}
+        <input type="password" id="password" name="password" minLength="4" maxLength="20" placeholder='password' required onChange={changeHandler}></input>
+      {/* </label> */}
       <button>Submit</button>
       <Link to={'/login'}>Login account?</Link>
     </form>
-  </>
+  </div>
 }
 
 export default SignUp

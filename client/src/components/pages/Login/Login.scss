@@ -1,0 +1,23 @@
+.login_page {
+  border: 2px solid red;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: stretch;
+    align-content: space-between;
+    width: 20em;
+
+    input {
+      padding: .2em;
+      text-indent: 10px;
+    }
+
+  }
+}

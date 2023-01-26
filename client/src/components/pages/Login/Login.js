@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 // hooks
@@ -8,7 +8,13 @@ import { urls } from '../../../api/urls'
 
 import { APP_NAME } from '../../../config/Global.Constants'
 
+// styles
+import './Login.scss';
+import { UserContext } from '../../../context/userContext'
+
 const Login = () => {
+
+  const { getUser } = useContext(UserContext);
 
   const navigate = useNavigate()
 
@@ -31,21 +37,41 @@ const Login = () => {
   const loginChangeHandler = (e) => {
     e.preventDefault()
     const [data] = useFetch(loginFormData, urls.loginUser, 'post');
-    data.then(data => console.log(data)).then(() => navigate('/profile')).catch(err => console.log(err));
+    data.then(res => getUser(res)).then(() => {
+      navigate(`/profile`)
+    }).catch(err => console.error(err));
   }
 
-  return <>
+  return <div className='login_page'>
     <form method='post' onSubmit={loginChangeHandler}>
-      <label htmlFor="email"> Email
-        <input type="text" id="email" name="email" minLength="10" maxLength="50" required onChange={changeHandler}></input>
-      </label>
-      <label htmlFor="password"> Password
-        <input type="password" id="password" name="password" minLength="4" maxLength="20" required onChange={changeHandler}></input>
-      </label>
+      {/* <label htmlFor="email"> Email */}
+      <input
+        type="text"
+        id="email"
+        name="email"
+        minLength="10"
+        maxLength="50"
+        placeholder="email"
+        required
+        onChange={changeHandler}
+      ></input>
+      {/* </label> */}
+      {/* <label htmlFor="password"> Password */}
+      <input
+        type="password"
+        id="password"
+        name="password"
+        minLength="4"
+        maxLength="20"
+        placeholder="password"
+        required
+        onChange={changeHandler}
+      ></input>
+      {/* </label> */}
       <button>Submit</button>
       <Link to={'/signup'}>Create {APP_NAME} account?</Link>
     </form>
-  </>
+  </div>
 }
 
 export default Login
