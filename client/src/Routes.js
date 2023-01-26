@@ -3,6 +3,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // components
 import WelcomePage from './components/pages/WelcomePage/WelcomePage';
@@ -40,6 +42,7 @@ function App() {
     <div className="App">
       <UserContextProvider>
         <RouterProvider router={router} />
+        <ToastContainer />
       </UserContextProvider>
     </div>
   )

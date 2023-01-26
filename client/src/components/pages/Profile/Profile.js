@@ -1,11 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types';
-import { UserContext } from '../../../context/userContext';
+import { toast } from 'react-toastify';
+// import { UserContext } from '../../../context/userContext';
+import { getItemFromLocalStorage } from '../../../helpers/globalHelpers';
 
 const Profile = () => {
-  const { userDetails } = useContext(UserContext);
+
+  useEffect(() => {
+    const email = getItemFromLocalStorage('email');
+    toast(`Welcome ${email}`)
+  }, [])
+
   return <>
-    Welcome {userDetails}
+    main page
   </>
 }
 

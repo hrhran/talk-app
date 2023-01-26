@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
+import { setLocalStorage } from "../helpers/globalHelpers";
 
 export const UserContext = React.createContext(null);
 
@@ -9,7 +10,8 @@ export const UserContextProvider = ({ children }) => {
 
   const getUser = (response) => {
     const { data } = response;
-    setUserDetails(data.email);
+    setLocalStorage(data)
+    // setUserDetails(data.email);
   }
 
   const value = {
@@ -21,5 +23,5 @@ export const UserContextProvider = ({ children }) => {
 }
 
 UserContextProvider.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.any,
 };
